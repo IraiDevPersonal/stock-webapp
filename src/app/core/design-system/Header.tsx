@@ -14,7 +14,10 @@ const Header = ({ title, children, classNames }: HeaderProps) => {
 	return (
 		<Box
 			as="header"
-			className={tw("flex items-center gap-4 h-16 py-0", classNames?.wrapper)}
+			className={tw(
+				"flex items-center justify-between gap-4 h-16 py-0 border-b border-default-300",
+				classNames?.wrapper
+			)}
 		>
 			<h1 className={tw("text-2xl font-bold", classNames?.title)}>{title}</h1>
 			{children}

@@ -22,4 +22,4 @@ const Main = ({ children, className }: Props) => {
 export default Main;
 
 const DEFAULT_CLASSNAME =
-	"flex flex-col w-full max-w-full overflow-x-hidden gap-4 p-4 min-h-screen bg-default-100";
+	"flex flex-col w-full max-w-full overflow-x-hidden gap-4 p-4 min-h-screen bg-default-100 bg-white";
