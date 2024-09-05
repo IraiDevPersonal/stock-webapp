@@ -44,7 +44,7 @@ export default function Modal<T extends HTMLElement>({
 						onClose?.();
 					}}
 					className={tw(
-						"bg-default-900/15 backdrop-blur-sm data-[state=open]:animate-overlayShow fixed inset-0",
+						"bg-default-900/15 backdrop-blur-sm data-[state=open]:animate-overlayShow fixed inset-0 z-10",
 						classNames?.overlay
 					)}
 				/>
@@ -55,7 +55,7 @@ export default function Modal<T extends HTMLElement>({
 						onClose?.();
 					}}
 					className={tw(
-						"border border-default-200",
+						"border border-default-200 z-20",
 						"fixed top-1/2 left-1/2 w-[90vw] max-w-[450px] rounded-2xl bg-white !outline-none",
 						"data-[state=open]:animate-contentShow translate-x-[-50%] translate-y-[-50%]",
 						classNames?.wrapper
@@ -171,7 +171,7 @@ Modal.Actions = function ModalActions({
 				isLoading={isLoading}
 				color="primary"
 			>
-				{action?.label ?? "Confirmar"}
+				{action?.label ?? "Aceptar"}
 			</Button>
 		</Modal.Footer>
 	);

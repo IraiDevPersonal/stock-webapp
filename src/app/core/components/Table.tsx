@@ -16,11 +16,11 @@ type TableProps<T> = {
 		height: number;
 	};
 	classNames?: {
+		table?: string;
 		column?: string;
-		wrapper?: string;
 		emptyContent?: string;
-		filterWrapper?: string;
-		columnWrapper?: string;
+		filtersRow?: string;
+		columnsRow?: string;
 	};
 };
 
@@ -40,19 +40,19 @@ function Table<T>({
 		<>
 			<TableVirtuoso
 				data={dataset}
-				className={classNames?.wrapper}
+				className={classNames?.table}
 				fixedFooterContent={() => renderFooter?.()}
 				itemContent={(idx, item) => children(item, idx)}
 				style={{ ...sizing, height: isEmpty ? 40 : (sizing?.height ?? 400) }}
 				fixedHeaderContent={() => (
 					<>
 						{renderFilter !== undefined && (
-							<tr className={tw("font-normal", classNames?.filterWrapper)}>
+							<tr className={tw("font-normal", classNames?.filtersRow)}>
 								{renderFilter()}
 							</tr>
 						)}
 
-						<tr className={tw("font-bold", classNames?.columnWrapper)}>
+						<tr className={tw("font-bold", classNames?.columnsRow)}>
 							{columns.map(({ key, children, ...column }) => (
 								<th
 									key={key}

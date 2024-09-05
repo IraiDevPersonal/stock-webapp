@@ -29,10 +29,11 @@ export type KeyDownEvent =
 	| React.KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>
 	| KeyboardEvent;
 
-export type TableColumn = {
+export type TableColumn<T = React.Key> = JsxAtributtes["th"] & {
+	key?: T;
 	width?: number;
 	children: React.ReactNode;
-} & JsxAtributtes["th"];
+};
 
 export type Option = {
 	value: string;

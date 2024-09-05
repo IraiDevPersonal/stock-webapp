@@ -10,7 +10,7 @@ export function useDisclosure(initalState?: boolean) {
 		setIsOpen(true);
 	}, []);
 	const onClose = useCallback(() => {
-		setIsOpen(true);
+		setIsOpen(false);
 	}, []);
 
 	return {

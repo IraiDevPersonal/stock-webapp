@@ -7,7 +7,13 @@ export class DateRepository {
 		this.date = date;
 	}
 
-	parse({ date = this.date, format }: { date?: Dayjs; format: DateFormat }) {
+	parse({
+		date = this.date,
+		format
+	}: {
+		date?: Dayjs | Date;
+		format: DateFormat;
+	}) {
 		return dayjs(date).format(DATE_FORMAT[format]);
 	}
 

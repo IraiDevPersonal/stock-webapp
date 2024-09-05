@@ -2,6 +2,7 @@ import { Option } from "@utils/types";
 import { tw } from "@utils/functions/tailwind";
 import { ForwardedRef, forwardRef, useId, useRef } from "react";
 import Field from "./Field";
+import IconSelector from "../design-system/icons/IconSelector";
 
 type Props = JSX.IntrinsicElements["select"] &
 	Partial<{
@@ -49,7 +50,11 @@ const Select = forwardRef(
 		};
 
 		return (
-			<Field id={currentId} isInvalid={isInvalid} fullwidth={fullwidth}>
+			<Field
+				id={currentId}
+				isInvalid={isInvalid}
+				fullwidth={fullwidth}
+			>
 				<Field.Label>{label}</Field.Label>
 
 				<Field.Wrapper>
@@ -64,7 +69,7 @@ const Select = forwardRef(
 									wrapperClassName,
 									className,
 									fullwidth && "w-full",
-									"appearance-none"
+									"appearance-none pr-8"
 								)}
 							>
 								{!emptyOption?.isHidden && (
@@ -74,7 +79,10 @@ const Select = forwardRef(
 								)}
 
 								{options.map(({ label, value }) => (
-									<option key={value} value={value}>
+									<option
+										key={value}
+										value={value}
+									>
 										{label}
 									</option>
 								))}
@@ -85,8 +93,7 @@ const Select = forwardRef(
 								onClick={handleClick}
 								className="absolute right-2 top-[35px] text-default-600"
 							>
-								{/* <IconSelector size={20} /> */}
-								<span>▼</span>
+								<IconSelector />
 							</figure>
 						</>
 					)}
