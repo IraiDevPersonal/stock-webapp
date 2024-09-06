@@ -1,9 +1,10 @@
-import dayjs, { Dayjs } from "dayjs";
+import { DateValue } from "@utils/types";
+import dayjs from "dayjs";
 
 export class DateRepository {
-	private date: Dayjs;
+	private date: DateValue;
 
-	constructor(date: Dayjs = dayjs()) {
+	constructor(date: DateValue = dayjs()) {
 		this.date = date;
 	}
 
@@ -11,13 +12,13 @@ export class DateRepository {
 		date = this.date,
 		format
 	}: {
-		date?: Dayjs | Date;
+		date?: DateValue;
 		format: DateFormat;
 	}) {
 		return dayjs(date).format(DATE_FORMAT[format]);
 	}
 
-	getSeconds(date: Dayjs = this.date) {
+	getSeconds(date: DateValue = this.date) {
 		const time = this.parse({ date, format: "time_24" });
 		const [hours, minutes, seconds] = time.split(":").map(Number);
 		return hours * 3600 + minutes * 60 + seconds;
@@ -27,10 +28,10 @@ export class DateRepository {
 type DateFormat = keyof typeof DATE_FORMAT;
 
 const DATE_FORMAT = {
-	amd: "YYYY-MM-DD",
-	dma: "DD-MM-YYYY",
-	amdh: "YYYY-MM-DD",
-	dmah: "DD-MM-YYYY hh:mm",
+	amd: "YYYY/MM/DD",
+	dma: "DD/MM/YYYY",
+	amdh: "YYYY/MM/DD",
+	dmah: "DD/MM/YYYY hh:mm",
 	dmonth: "DD MMM",
 	time_24: "HH:mm:ss",
 	time_12: "hh:mm:ss",

@@ -1,6 +1,8 @@
 // export type DateFormats = keyof typeof DATE_FORMATS
 // export type LocalStorageKeys = keyof typeof LOCAL_STORAGE_KEYS
 
+import { Dayjs } from "dayjs";
+
 export type TimerFormat = "hh:mm:ss" | "mm:ss" | "hh:mm";
 export type HttpMethod = "get" | "post" | "put" | "delete";
 export type ErrorType = "cancelled" | "unexpected";
@@ -29,10 +31,16 @@ export type KeyDownEvent =
 	| React.KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>
 	| KeyboardEvent;
 
+export type DateValue = Dayjs;
+
 export type TableColumn<T = React.Key> = JsxAtributtes["th"] & {
 	key?: T;
-	width?: number;
 	children: React.ReactNode;
+	// styles: {
+	// 	width?: number;
+	// 	minWidth?: number;
+	// 	maxWidth?: number | string
+	// };
 };
 
 export type Option = {

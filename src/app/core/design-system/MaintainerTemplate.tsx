@@ -48,6 +48,9 @@ const MaintainerTemplate = <T extends object>({
 				<Table
 					dataset={tableDataset}
 					columns={tableColumns}
+					classNames={{
+						wrapper: "overflow-auto"
+					}}
 					emptyContent="No hay items..."
 				>
 					{tableCells}

@@ -16,7 +16,7 @@ type TableProps<T> = {
 		height: number;
 	};
 	classNames?: {
-		table?: string;
+		wrapper?: string;
 		column?: string;
 		emptyContent?: string;
 		filtersRow?: string;
@@ -40,7 +40,7 @@ function Table<T>({
 		<>
 			<TableVirtuoso
 				data={dataset}
-				className={classNames?.table}
+				className={classNames?.wrapper}
 				fixedFooterContent={() => renderFooter?.()}
 				itemContent={(idx, item) => children(item, idx)}
 				style={{ ...sizing, height: isEmpty ? 40 : (sizing?.height ?? 400) }}
@@ -57,9 +57,13 @@ function Table<T>({
 								<th
 									key={key}
 									className={tw(
-										"p-2 first-letter:uppercase",
+										"p-2 first-letter:uppercase whitespace-nowrap",
 										classNames?.column
 									)}
+									// style={{
+									// 	width,
+									// 	minWidth
+									// }}
 									{...column}
 								>
 									{children}
@@ -85,11 +89,15 @@ function Table<T>({
 
 export default Table;
 
-type TableCellProps = PropsWithChildren & JsxAtributtes["td"];
+type TableCellProps = PropsWithChildren &
+	JsxAtributtes["td"] & {
+		nowrap?: boolean;
+	};
 
 Table.Cell = function TableCell({
 	children,
 	className,
+	nowrap,
 	...props
 }: TableCellProps) {
 	return (
@@ -98,7 +106,8 @@ Table.Cell = function TableCell({
 			align="left"
 			className={tw(
 				"px-2 py-1 font-normal border-t border-default-300",
-				className
+				className,
+				nowrap && "whitespace-nowrap"
 			)}
 			{...props}
 		>

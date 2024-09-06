@@ -3,6 +3,7 @@ import { v4 } from "uuid";
 import { Route } from "wouter";
 import { Product } from "../models/Product";
 import ProductMaintainer from "../components/ProductMaintainer";
+import dayjs from "dayjs";
 
 const ProductsPage = () => {
 	return (
@@ -21,11 +22,11 @@ const PRODUCTS: Product[] = [
 		name: "Master Cat Gatitos",
 		brand: "Master Cat",
 		category: "Mascotas",
-		type: "Gato",
+		subCategory: "Gato",
 		stock: 10,
 		cost: 23000,
 		price: 33000,
-		createdAt: new Date(),
+		createdAt: dayjs(),
 		image: ""
 	}
 ];
