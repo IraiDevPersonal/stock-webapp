@@ -2,6 +2,7 @@ import Table from "@app/core/components/Table";
 import { getColAlign } from "@utils/functions/utilities";
 import { SubCategory } from "../models/SubCategory";
 import { SUB_CATEGORIES_COLUMNS } from "../uitls/constants";
+import Chip from "@app/core/components/Chip";
 
 type SubCategoryRowProps = {
 	item: SubCategory;
@@ -22,6 +23,15 @@ const SubCategoryRow = ({ index, item }: SubCategoryRowProps) => {
 				align={align("name")}
 			>
 				{item.name}
+			</Table.Cell>
+			<Table.Cell
+				nowrap
+				align={align("category")}
+			>
+				<Chip
+					label={item.category.name}
+					color="primary"
+				/>
 			</Table.Cell>
 		</>
 	);

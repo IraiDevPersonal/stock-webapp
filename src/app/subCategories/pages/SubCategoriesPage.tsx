@@ -17,7 +17,12 @@ export default SubCategoriesPage;
 const SUB_CATEGORIES: SubCategory[] = [
 	{
 		id: v4(),
-		key: "mascotas",
-		name: "Mascotas"
+		key: "alimento_gato",
+		name: "Alimento de Gatos",
+		category: {
+			id: v4(),
+			key: "mascotas",
+			name: "Mascotas"
+		}
 	}
 ];

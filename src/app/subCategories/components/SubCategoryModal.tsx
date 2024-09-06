@@ -2,6 +2,7 @@ import Input from "@app/core/components/Input";
 import MaintainerModalTemplate from "@app/core/design-system/MaintainerModalTemplate";
 import { MaintainerChildrenProps } from "@app/core/design-system/MaintainerTemplate";
 import { SubCategory } from "../models/SubCategory";
+import Select from "@app/core/components/Select";
 
 type SubCategorytModalProps = MaintainerChildrenProps & {
 	initialState?: SubCategory;
@@ -28,6 +29,10 @@ const SubCategoryModal = ({
 			<Input
 				fullwidth
 				label="Nombre"
+			/>
+			<Select
+				fullwidth
+				label="Categoria"
 			/>
 		</MaintainerModalTemplate>
 	);
