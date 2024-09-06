@@ -6,7 +6,7 @@ import { SubCategory } from "../models/SubCategory";
 
 const SubCategoriesPage = () => {
 	return (
-		<Route path={path.private.categories}>
+		<Route path={path.private.subCategories}>
 			<SubCategoriesMaintainer items={SUB_CATEGORIES} />
 		</Route>
 	);

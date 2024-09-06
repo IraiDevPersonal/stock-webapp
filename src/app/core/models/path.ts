@@ -1,1 +1,5 @@
-export type Path = { path: string; label: string; icon: JSX.Element };
+export type Path = {
+	path: string;
+	label: string;
+	icon: JSX.Element;
+};

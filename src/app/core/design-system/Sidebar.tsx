@@ -4,7 +4,7 @@ import { DateRepository } from "@utils/repositories/DateRepository";
 import { Link, useRoute } from "wouter";
 import ArrayMap from "../components/ArrayMap";
 import Box from "../components/Box";
-import { Path } from "../models/path";
+import { Path } from "../models/Path";
 import { PATHS } from "../utils/constants";
 
 const Sidebar = () => {

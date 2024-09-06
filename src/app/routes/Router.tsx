@@ -1,9 +1,9 @@
-import RootLayout from "@app/core/design-system/layouts/RootLayout";
 import PrivateLayout from "@app/core/design-system/layouts/PrivateLayout";
+import RootLayout from "@app/core/design-system/layouts/RootLayout";
+import { PAGES } from "@app/core/utils/constants";
+import React from "react";
 import { Redirect, Route, Router as Wouter } from "wouter";
 import { path } from "./path";
-import ProductsPage from "@app/products/pages/ProductsPage";
-import CategoriesPage from "@app/categories/pages/CategoriesPage";
 
 const Router = () => {
 	return (
@@ -11,8 +11,9 @@ const Router = () => {
 			<Wouter>
 				<PrivateLayout>
 					<Navigate />
-					<ProductsPage />
-					<CategoriesPage />
+					{PAGES.map((el) => (
+						<React.Fragment key={el.key}>{el.component}</React.Fragment>
+					))}
 				</PrivateLayout>
 			</Wouter>
 		</RootLayout>

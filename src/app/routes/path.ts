@@ -3,6 +3,7 @@ export const path = {
 	private: {
 		home: "/inicio",
 		categories: "categorias",
+		subCategories: "sub-categorias",
 		profile: "/perfil"
 	},
 	public: {
