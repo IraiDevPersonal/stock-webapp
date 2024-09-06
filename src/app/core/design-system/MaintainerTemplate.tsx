@@ -30,7 +30,10 @@ const MaintainerTemplate = <T extends object>({
 	const { isOpen, onOpen, onClose } = useDisclosure();
 	return (
 		<>
-			<Header title={`Mantenedor de ${title}`}>
+			<Header
+				title={`Mantenedor de ${title}`}
+				classNames={{ title: "mr-auto", wrapper: "justify-start" }}
+			>
 				{children && (
 					<Button
 						isIconOnly

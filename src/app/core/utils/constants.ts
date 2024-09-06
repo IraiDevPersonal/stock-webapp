@@ -5,28 +5,32 @@ import ProductsPage from "@app/products/pages/ProductsPage";
 import CategoriesPage from "@app/categories/pages/CategoriesPage";
 import SubCategoriesPage from "@app/subCategories/pages/SubCategoriesPage";
 import BrandsPage from "@app/brands/pages/BrandsPage";
+import IconProduct from "../design-system/icons/IconProduct";
+import IconCategory from "../design-system/icons/IconCategory";
+import IconBrand from "../design-system/icons/IconBrand";
+import IconSubCategory from "../design-system/icons/IconSubCategory";
 
 export const PATHS_WITH_PAGE: (Path & { page: React.ReactNode })[] = [
 	{
-		icon: IconHome(),
+		icon: IconProduct(),
 		label: "Home",
 		path: path.private.home,
 		page: ProductsPage()
 	},
 	{
-		icon: IconHome(),
+		icon: IconCategory(),
 		label: "Categorias",
 		path: path.private.categories,
 		page: CategoriesPage()
 	},
 	{
-		icon: IconHome(),
+		icon: IconSubCategory(),
 		label: "Sub Categorias",
 		path: path.private.subCategories,
 		page: SubCategoriesPage()
 	},
 	{
-		icon: IconHome(),
+		icon: IconBrand(),
 		label: "Marcas",
 		path: path.private.brands,
 		page: BrandsPage()
