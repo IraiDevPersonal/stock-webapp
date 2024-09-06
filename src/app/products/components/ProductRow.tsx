@@ -30,7 +30,7 @@ const ProductRow = ({ index, item }: ProductRowProps) => {
 				nowrap
 				align={align("brand")}
 			>
-				{item.brand}
+				{item.brand.name}
 			</Table.Cell>
 			<Table.Cell
 				nowrap
@@ -46,7 +46,7 @@ const ProductRow = ({ index, item }: ProductRowProps) => {
 				align={align("subCategory")}
 			>
 				<Chip
-					label={item.subCategory}
+					label={item.subCategory.name}
 					color="secondary"
 				/>
 			</Table.Cell>

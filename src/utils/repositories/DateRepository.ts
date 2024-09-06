@@ -23,6 +23,10 @@ export class DateRepository {
 		const [hours, minutes, seconds] = time.split(":").map(Number);
 		return hours * 3600 + minutes * 60 + seconds;
 	}
+
+	getDate() {
+		return this.date;
+	}
 }
 
 type DateFormat = keyof typeof DATE_FORMAT;

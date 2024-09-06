@@ -1,14 +1,14 @@
 import { path } from "@app/routes/path";
+import { DateRepository } from "@utils/repositories/DateRepository";
 import { v4 } from "uuid";
 import { Route } from "wouter";
+import ProductsMaintainer from "../components/ProductsMaintainer";
 import { Product } from "../models/Product";
-import ProductMaintainer from "../components/ProductMaintainer";
-import dayjs from "dayjs";
 
 const ProductsPage = () => {
 	return (
 		<Route path={path.private.home}>
-			<ProductMaintainer items={PRODUCTS} />
+			<ProductsMaintainer items={PRODUCTS} />
 		</Route>
 	);
 };
@@ -20,17 +20,25 @@ const PRODUCTS: Product[] = [
 		id: v4(),
 		code: 12345,
 		name: "Master Cat Gatitos",
-		brand: "Master Cat",
+		brand: {
+			id: v4(),
+			key: "mastercat",
+			name: "Master Cat"
+		},
 		category: {
 			id: v4(),
 			key: "mascotas",
 			name: "Mascotas"
 		},
-		subCategory: "Gato",
+		subCategory: {
+			id: v4(),
+			key: "alimento_gato",
+			name: "Alimento de Gato"
+		},
 		stock: 10,
 		cost: 23000,
 		price: 33000,
-		createdAt: dayjs(),
+		createdAt: new DateRepository().getDate(),
 		image: ""
 	}
 ];

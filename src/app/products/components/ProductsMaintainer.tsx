@@ -8,7 +8,7 @@ type ProductMaintainerProps = {
 	items: Product[];
 };
 
-const ProductMaintainer = ({ items }: ProductMaintainerProps) => {
+const ProductsMaintainer = ({ items }: ProductMaintainerProps) => {
 	return (
 		<>
 			<MaintainerTemplate
@@ -28,4 +28,4 @@ const ProductMaintainer = ({ items }: ProductMaintainerProps) => {
 	);
 };
 
-export default ProductMaintainer;
+export default ProductsMaintainer;
