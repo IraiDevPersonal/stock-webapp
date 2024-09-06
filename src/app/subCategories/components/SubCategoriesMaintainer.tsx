@@ -1,6 +1,6 @@
 import MaintainerTemplate from "@app/core/design-system/MaintainerTemplate";
 import { SubCategory } from "../models/SubCategory";
-import { CATEGORIES_COLUMNS } from "../uitls/constants";
+import { SUB_CATEGORIES_COLUMNS } from "../uitls/constants";
 import SubCategoryRow from "./SubCategoryRow";
 import SubCategoryModal from "./SubCategoryModal";
 
@@ -13,8 +13,8 @@ const SubCategoriesMaintainer = ({ items }: SubCategoryMaintainerProps) => {
 		<>
 			<MaintainerTemplate
 				title="Sub Categorias"
-				tableDataset={items}
-				tableColumns={CATEGORIES_COLUMNS}
+				tableItems={items}
+				tableColumns={SUB_CATEGORIES_COLUMNS}
 				tableCells={(item, idx) => (
 					<SubCategoryRow
 						index={idx}

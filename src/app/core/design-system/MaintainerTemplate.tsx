@@ -8,7 +8,7 @@ import { useDisclosure } from "../hooks/useDisclosure";
 
 type MaintainerTemplateProps<T extends object> = {
 	title: string;
-	tableDataset: T[];
+	tableItems: T[];
 	tableColumns: TableColumn[];
 	tableCells(item: T, idx: number): JSX.Element;
 	children?(props: MaintainerChildrenProps): React.ReactNode;
@@ -22,7 +22,7 @@ export type MaintainerChildrenProps = {
 
 const MaintainerTemplate = <T extends object>({
 	tableColumns,
-	tableDataset,
+	tableItems,
 	tableCells,
 	children,
 	title
@@ -46,7 +46,7 @@ const MaintainerTemplate = <T extends object>({
 			</Header>
 			<Main>
 				<Table
-					dataset={tableDataset}
+					dataset={tableItems}
 					columns={tableColumns}
 					classNames={{
 						wrapper: "overflow-auto"

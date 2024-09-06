@@ -13,7 +13,7 @@ const ProductMaintainer = ({ items }: ProductMaintainerProps) => {
 		<>
 			<MaintainerTemplate
 				title="Productos"
-				tableDataset={items}
+				tableItems={items}
 				tableColumns={PRODUCTS_COLUMNS}
 				tableCells={(item, idx) => (
 					<ProductRow

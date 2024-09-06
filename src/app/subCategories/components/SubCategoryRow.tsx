@@ -1,7 +1,7 @@
 import Table from "@app/core/components/Table";
 import { getColAlign } from "@utils/functions/utilities";
 import { SubCategory } from "../models/SubCategory";
-import { CATEGORIES_COLUMNS } from "../uitls/constants";
+import { SUB_CATEGORIES_COLUMNS } from "../uitls/constants";
 
 type SubCategoryRowProps = {
 	item: SubCategory;
@@ -9,7 +9,7 @@ type SubCategoryRowProps = {
 };
 
 function align(key: keyof SubCategory) {
-	return getColAlign(CATEGORIES_COLUMNS, key);
+	return getColAlign(SUB_CATEGORIES_COLUMNS, key);
 }
 
 const SubCategoryRow = ({ index, item }: SubCategoryRowProps) => {

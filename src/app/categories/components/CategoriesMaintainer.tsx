@@ -13,7 +13,7 @@ const CategoriesMaintainer = ({ items }: CategoryMaintainerProps) => {
 		<>
 			<MaintainerTemplate
 				title="Categorias"
-				tableDataset={items}
+				tableItems={items}
 				tableColumns={CATEGORIES_COLUMNS}
 				tableCells={(item, idx) => (
 					<CategoryRow
