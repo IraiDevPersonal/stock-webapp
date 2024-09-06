@@ -1,6 +1,6 @@
 import MaintainerTemplate from "@app/core/design-system/MaintainerTemplate";
 import { Product } from "../models/Product";
-import { PRODUCTS_COLUMNS } from "../uitls/constants";
+import { PRODUCTS_COLUMNS } from "../utils/constants";
 import ProductRow from "./ProductRow";
 import ProductModal from "./ProductModal";
 

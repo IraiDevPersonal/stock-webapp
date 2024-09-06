@@ -1,7 +1,7 @@
 import Table from "@app/core/components/Table";
 import { getColAlign } from "@utils/functions/utilities";
 import { Category } from "../models/Category";
-import { CATEGORIES_COLUMNS } from "../uitls/constants";
+import { CATEGORIES_COLUMNS } from "../utils/constants";
 
 type CategoryRowProps = {
 	item: Category;

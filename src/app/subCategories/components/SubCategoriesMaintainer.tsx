@@ -1,6 +1,6 @@
 import MaintainerTemplate from "@app/core/design-system/MaintainerTemplate";
 import { SubCategory } from "../models/SubCategory";
-import { SUB_CATEGORIES_COLUMNS } from "../uitls/constants";
+import { SUB_CATEGORIES_COLUMNS } from "../utils/constants";
 import SubCategoryRow from "./SubCategoryRow";
 import SubCategoryModal from "./SubCategoryModal";
 

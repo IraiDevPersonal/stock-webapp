@@ -1,6 +1,6 @@
 import MaintainerTemplate from "@app/core/design-system/MaintainerTemplate";
 import { Category } from "../models/Category";
-import { CATEGORIES_COLUMNS } from "../uitls/constants";
+import { CATEGORIES_COLUMNS } from "../utils/constants";
 import CategoryRow from "./CategoryRow";
 import CategoryModal from "./CategoryModal";
 

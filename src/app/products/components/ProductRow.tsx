@@ -1,7 +1,7 @@
 import Table from "@app/core/components/Table";
 import { Product } from "../models/Product";
 import { getColAlign } from "@utils/functions/utilities";
-import { PRODUCTS_COLUMNS } from "../uitls/constants";
+import { PRODUCTS_COLUMNS } from "../utils/constants";
 import { displayFormatedNumber } from "@utils/functions/displayFormatedNumber";
 import { DateRepository } from "@utils/repositories/DateRepository";
 import Chip from "@app/core/components/Chip";
