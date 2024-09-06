@@ -7,7 +7,7 @@ import { Product } from "../models/Product";
 
 const ProductsPage = () => {
 	return (
-		<Route path={path.private.home}>
+		<Route path={path.private.products}>
 			<ProductsMaintainer items={PRODUCTS} />
 		</Route>
 	);

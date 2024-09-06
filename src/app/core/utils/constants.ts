@@ -10,43 +10,82 @@ import IconCategory from "../design-system/icons/IconCategory";
 import IconBrand from "../design-system/icons/IconBrand";
 import IconSubCategory from "../design-system/icons/IconSubCategory";
 
-export const PATHS_WITH_PAGE: (Path & { page: React.ReactNode })[] = [
+export const PATHS_WITH_PAGE: Path[] = [
+	{
+		icon: IconHome(),
+		label: "Inicio",
+		path: path.private.home,
+		page: "Inicio"
+	},
 	{
 		icon: IconProduct(),
-		label: "Home",
-		path: path.private.home,
-		page: ProductsPage()
-	},
-	{
-		icon: IconCategory(),
-		label: "Categorias",
-		path: path.private.categories,
-		page: CategoriesPage()
-	},
-	{
-		icon: IconSubCategory(),
-		label: "Sub Categorias",
-		path: path.private.subCategories,
-		page: SubCategoriesPage()
-	},
-	{
-		icon: IconBrand(),
-		label: "Marcas",
-		path: path.private.brands,
-		page: BrandsPage()
+		label: "Mantenedores",
+		path: "",
+		page: ProductsPage(),
+		items: [
+			{
+				icon: IconProduct(),
+				label: "Productos",
+				path: path.private.products,
+				page: ProductsPage()
+			},
+			{
+				icon: IconCategory(),
+				label: "Categorias",
+				path: path.private.categories,
+				page: CategoriesPage()
+			},
+			{
+				icon: IconSubCategory(),
+				label: "Sub Categorias",
+				path: path.private.subCategories,
+				page: SubCategoriesPage()
+			},
+			{
+				icon: IconBrand(),
+				label: "Marcas",
+				path: path.private.brands,
+				page: BrandsPage(),
+				items: [
+					{
+						icon: IconSubCategory(),
+						label: "Sub Categorias",
+						path: path.private.subCategories,
+						page: SubCategoriesPage()
+					},
+					{
+						icon: IconBrand(),
+						label: "Marcas",
+						path: path.private.brands,
+						page: BrandsPage()
+					}
+				]
+			}
+		]
 	}
 ];
 
-export const buildPages = () =>
-	PATHS_WITH_PAGE.map((el) => ({
+type BuilderPage = {
+	key: string;
+	component: React.ReactNode;
+	items: BuilderPage[];
+};
+
+const builderPages = (items: Path[]): BuilderPage[] =>
+	items.map((el) => ({
 		key: el.path,
-		component: el.page
+		component: el.page,
+		items: builderPages(el.items ?? [])
 	}));
 
-export const PATHS: Path[] = PATHS_WITH_PAGE.map((el) => {
+export const routerBuilder = () =>
+	builderPages(PATHS_WITH_PAGE).flatMap(({ items, ...el }) => [el, ...items]);
+
+export const PATHS: Omit<Path, "page">[] = PATHS_WITH_PAGE.map((el) => {
 	return {
 		icon: el.icon,
 		path: el.path,
-		label: el.label
+		label: el.label,
+		items: el.items
 	};
 });

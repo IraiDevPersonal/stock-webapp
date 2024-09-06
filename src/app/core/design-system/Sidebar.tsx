@@ -6,6 +6,7 @@ import ArrayMap from "../components/ArrayMap";
 import Box from "../components/Box";
 import { Path } from "../models/Path";
 import { PATHS } from "../utils/constants";
+import { useDisclosure } from "../hooks/useDisclosure";
 
 const Sidebar = () => {
 	const date = new DateRepository();
@@ -27,18 +28,7 @@ const Sidebar = () => {
 			</header>
 
 			<nav>
-				<ArrayMap
-					as="ul"
-					dataset={PATHS}
-					className="space-y-1"
-				>
-					{(item) => (
-						<ActiveLink
-							key={item.path}
-							{...item}
-						/>
-					)}
-				</ArrayMap>
+				<NavigationBuilder items={PATHS} />
 			</nav>
 
 			<footer className="mt-auto">
@@ -50,7 +40,7 @@ const Sidebar = () => {
 
 export default Sidebar;
 
-function ActiveLink(item: Path) {
+function ActiveLink(item: Omit<Path, "page">) {
 	const [isActive] = useRoute(item.path);
 	return (
 		<Link
@@ -58,16 +48,70 @@ function ActiveLink(item: Path) {
 			to={item.path}
 			key={item.path}
 		>
-			<li
-				className={tw(
-					"flex items-center gap-2.5 font-medium p-2.5 pl-4 w-5/6 rounded-r-xl hover:bg-default-100",
-					"transition-colors duration-300 cursor-pointer",
-					isActive && "text-white bg-primary hover:bg-primary-500"
-				)}
-			>
+			<li className={styles(isActive)}>
 				<figure>{item.icon}</figure>
 				{item.label}
 			</li>
 		</Link>
+	);
+}
+
+function WithSubItems({ items, label }: { label: string; items: Path[] }) {
+	const { isOpen, onOpenChange } = useDisclosure();
+	return (
+		<li
+			className={styles()}
+			onClick={onOpenChange}
+		>
+			{label}
+			{isOpen && (
+				<ul>
+					{items.map((item) => (
+						<ActiveLink
+							key={item.path}
+							{...item}
+						/>
+					))}
+				</ul>
+			)}
+		</li>
+	);
+}
+
+function NavigationBuilder({ items }: { items: Omit<Path, "page">[] }) {
+	return (
+		<ArrayMap
+			as="ul"
+			dataset={items}
+			className="space-y-1"
+		>
+			{({ items: childrenItems = [], ...item }) => {
+				if (childrenItems.length > 0) {
+					return (
+						<WithSubItems
+							key={item.label}
+							label={item.label}
+							items={childrenItems}
+						/>
+					);
+				}
+
+				return (
+					<ActiveLink
+						key={item.path}
+						{...item}
+					/>
+				);
+			}}
+		</ArrayMap>
+	);
+}
+
+function styles(isActive?: boolean, extra?: string) {
+	return tw(
+		"flex items-center gap-2.5 font-medium p-2.5 pl-4 w-5/6 rounded-r-xl hover:bg-default-100",
+		"transition-colors duration-300 cursor-pointer",
+		isActive && "text-white bg-primary hover:bg-primary-500",
+		extra
 	);
 }

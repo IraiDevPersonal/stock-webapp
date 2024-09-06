@@ -1,17 +1,18 @@
 import PrivateLayout from "@app/core/design-system/layouts/PrivateLayout";
 import RootLayout from "@app/core/design-system/layouts/RootLayout";
-import { buildPages } from "@app/core/utils/constants";
+import { routerBuilder } from "@app/core/utils/constants";
 import React from "react";
 import { Redirect, Route, Router as Wouter } from "wouter";
 import { path } from "./path";
 
 const Router = () => {
+	console.log(routerBuilder());
 	return (
 		<RootLayout>
 			<Wouter>
 				<PrivateLayout>
 					<Navigate />
-					{buildPages().map((el) => (
+					{routerBuilder().map((el) => (
 						<React.Fragment key={el.key}>{el.component}</React.Fragment>
 					))}
 				</PrivateLayout>
