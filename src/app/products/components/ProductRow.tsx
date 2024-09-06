@@ -7,7 +7,7 @@ import { DateRepository } from "@utils/repositories/DateRepository";
 import Chip from "@app/core/components/Chip";
 
 type ProductRowProps = {
-	product: Product;
+	item: Product;
 	index: number;
 };
 
@@ -15,29 +15,29 @@ function align(key: keyof Product) {
 	return getColAlign(PRODUCTS_COLUMNS, key);
 }
 
-const ProductRow = ({ index, product }: ProductRowProps) => {
+const ProductRow = ({ index, item }: ProductRowProps) => {
 	return (
 		<>
 			<Table.Cell align={align("#" as any)}> {index + 1}</Table.Cell>
-			<Table.Cell align={align("code")}>{product.code}</Table.Cell>
+			<Table.Cell align={align("code")}>{item.code}</Table.Cell>
 			<Table.Cell
 				nowrap
 				align={align("name")}
 			>
-				{product.name}
+				{item.name}
 			</Table.Cell>
 			<Table.Cell
 				nowrap
 				align={align("brand")}
 			>
-				{product.brand}
+				{item.brand}
 			</Table.Cell>
 			<Table.Cell
 				nowrap
 				align={align("category")}
 			>
 				<Chip
-					label={product.category}
+					label={item.category.name}
 					color="primary"
 				/>
 			</Table.Cell>
@@ -46,7 +46,7 @@ const ProductRow = ({ index, product }: ProductRowProps) => {
 				align={align("subCategory")}
 			>
 				<Chip
-					label={product.subCategory}
+					label={item.subCategory}
 					color="secondary"
 				/>
 			</Table.Cell>
@@ -54,25 +54,25 @@ const ProductRow = ({ index, product }: ProductRowProps) => {
 				align={align("stock")}
 				className="font-bold"
 			>
-				{product.stock}
+				{item.stock}
 			</Table.Cell>
 			<Table.Cell
 				nowrap
 				align={align("cost")}
 				className="font-bold text-danger"
 			>
-				{displayFormatedNumber(product.cost)}
+				{displayFormatedNumber(item.cost)}
 			</Table.Cell>
 			<Table.Cell
 				nowrap
 				align={align("price")}
 				className="font-bold text-success"
 			>
-				{displayFormatedNumber(product.price)}
+				{displayFormatedNumber(item.price)}
 			</Table.Cell>
 			<Table.Cell align={align("createdAt")}>
 				{new DateRepository().parse({
-					date: product.createdAt,
+					date: item.createdAt,
 					format: "dma"
 				})}
 			</Table.Cell>

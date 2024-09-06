@@ -7,5 +7,10 @@ export const PATHS: Path[] = [
 		icon: IconHome(),
 		label: "Home",
 		path: path.private.home
+	},
+	{
+		icon: IconHome(),
+		label: "Categorias",
+		path: path.private.categories
 	}
 ];

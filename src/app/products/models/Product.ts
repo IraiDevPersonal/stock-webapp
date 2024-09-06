@@ -1,3 +1,4 @@
+import { Category } from "@app/categories/models/Category";
 import { DateValue } from "@utils/types";
 
 export type Product = {
@@ -9,7 +10,7 @@ export type Product = {
 	cost: number;
 	price: number;
 	image: string;
-	category: string;
+	category: Category;
 	subCategory: string;
 	createdAt: DateValue;
 };

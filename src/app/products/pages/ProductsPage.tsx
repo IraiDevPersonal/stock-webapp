@@ -8,7 +8,7 @@ import dayjs from "dayjs";
 const ProductsPage = () => {
 	return (
 		<Route path={path.private.home}>
-			<ProductMaintainer products={PRODUCTS} />
+			<ProductMaintainer items={PRODUCTS} />
 		</Route>
 	);
 };
@@ -21,7 +21,11 @@ const PRODUCTS: Product[] = [
 		code: 12345,
 		name: "Master Cat Gatitos",
 		brand: "Master Cat",
-		category: "Mascotas",
+		category: {
+			id: v4(),
+			key: "mascotas",
+			name: "Mascotas"
+		},
 		subCategory: "Gato",
 		stock: 10,
 		cost: 23000,

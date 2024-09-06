@@ -5,20 +5,20 @@ import ProductRow from "./ProductRow";
 import ProductModal from "./ProductModal";
 
 type ProductMaintainerProps = {
-	products: Product[];
+	items: Product[];
 };
 
-const ProductMaintainer = ({ products }: ProductMaintainerProps) => {
+const ProductMaintainer = ({ items }: ProductMaintainerProps) => {
 	return (
 		<>
 			<MaintainerTemplate
 				title="Productos"
-				tableDataset={products}
+				tableDataset={items}
 				tableColumns={PRODUCTS_COLUMNS}
 				tableCells={(item, idx) => (
 					<ProductRow
 						index={idx}
-						product={item}
+						item={item}
 					/>
 				)}
 			>
