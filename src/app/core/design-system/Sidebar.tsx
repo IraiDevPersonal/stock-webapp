@@ -4,9 +4,10 @@ import { DateRepository } from "@utils/repositories/DateRepository";
 import { Link, useRoute } from "wouter";
 import ArrayMap from "../components/ArrayMap";
 import Box from "../components/Box";
+import { useDisclosure } from "../hooks/useDisclosure";
 import { Path } from "../models/Path";
 import { PATHS } from "../utils/constants";
-import { useDisclosure } from "../hooks/useDisclosure";
+import IconArrowDown from "./icons/IconArrowDown";
 
 const Sidebar = () => {
 	const date = new DateRepository();
@@ -59,22 +60,37 @@ function ActiveLink(item: Omit<Path, "page">) {
 function WithSubItems({ items, label }: { label: string; items: Path[] }) {
 	const { isOpen, onOpenChange } = useDisclosure();
 	return (
-		<li
-			className={styles()}
-			onClick={onOpenChange}
-		>
-			{label}
-			{isOpen && (
-				<ul>
-					{items.map((item) => (
-						<ActiveLink
-							key={item.path}
-							{...item}
-						/>
-					))}
-				</ul>
-			)}
-		</li>
+		<>
+			<li
+				className={styles(false)}
+				onClick={onOpenChange}
+			>
+				<figure
+					className={tw(
+						"transition-transform duration-300 -rotate-90",
+						isOpen && "rotate-0"
+					)}
+				>
+					<IconArrowDown />
+				</figure>
+				{label}
+			</li>
+			<ul
+				style={{
+					height: isOpen ? `calc(2.85rem*${items.length})` : 0,
+					opacity: isOpen ? "100%" : "0%",
+					scale: isOpen ? "100%" : "95%"
+				}}
+				className="transition-[height, opacity, transform] duration-300 overflow-hidden border-b"
+			>
+				{items.map((item) => (
+					<ActiveLink
+						key={item.path}
+						{...item}
+					/>
+				))}
+			</ul>
+		</>
 	);
 }
 
@@ -109,7 +125,7 @@ function NavigationBuilder({ items }: { items: Omit<Path, "page">[] }) {
 
 function styles(isActive?: boolean, extra?: string) {
 	return tw(
-		"flex items-center gap-2.5 font-medium p-2.5 pl-4 w-5/6 rounded-r-xl hover:bg-default-100",
+		"flex items-center gap-2.5 font-medium h-11 pr-2.5 pl-4 w-5/6 rounded-r-xl hover:bg-default-100",
 		"transition-colors duration-300 cursor-pointer",
 		isActive && "text-white bg-primary hover:bg-primary-500",
 		extra
